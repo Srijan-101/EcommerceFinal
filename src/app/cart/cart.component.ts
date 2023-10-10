@@ -2,6 +2,7 @@ import { CSP_NONCE, Component, OnInit } from '@angular/core';
 import { MessengerService } from './Messenger.service';
 import { CartService } from './cart.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class CartComponent implements OnInit {
    myCart:any[] = [];
 
-   constructor(private MessengerService:MessengerService,private cartService:CartService) {}
+   constructor(private MessengerService:MessengerService,private cartService:CartService,private route:Router) {}
       
       totalProduct:number=0;
       totalPrice:number=0
@@ -36,7 +37,12 @@ export class CartComponent implements OnInit {
       }
 
       onConfirm(){
-        let a = document.getElementById("cart-confirm");
-        a?.classList.remove("hidden");
+        if(localStorage.getItem("currentUser")){
+            let a = document.getElementById("cart-confirm");
+            a?.classList.remove("hidden");
+        }else {
+            localStorage.setItem('get-back','true');
+            this.route.navigate(['/login']);
+        }
     }
 }

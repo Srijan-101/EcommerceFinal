@@ -28,12 +28,14 @@ export class LoginComponent implements OnInit{
          const password = this.LoginForm.value.Password
          this.authService.login(email,password)
              .subscribe((res) => {
-                 console.log(res)
-                 this.router.navigate(['/'])
+                 if(localStorage.getItem('get-back')){
+                    this.router.navigate(['/Cart']);
+                    localStorage.removeItem('get-back');
+                 }else {this.router.navigate(['/'])}
              },
                (error) => {
                   console.log(error);
                }
-             )
+          )
      }
 }
