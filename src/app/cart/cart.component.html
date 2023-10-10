@@ -1,0 +1,132 @@
+<app-cart-confirm [finalProduct]="myCart" [GrandTotal]="totalPrice"></app-cart-confirm>
+
+<div class="container">
+  <div class="p-6 m-3">
+    <div
+      class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700"
+    >
+      <div class="grid grid-cols-1 mb-6">
+        <h1
+          class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white sm:px-2 lg:px-2"
+        >
+          Shopping Cart
+        </h1>
+        <p
+          class="text-lg text-align-left font-normal text-gray-500 lg:text-lg sm:px-2 xl:px-2 lg:px-2 dark:text-gray-400"
+        >
+          You have {{totalProduct}} items in your shopping cart.
+        </p>
+      </div>
+
+      <div class="mt-2 relative overflow-x-scoll">
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Image</span>
+              </th>
+              <th scope="col" class="px-6 py-3">Product</th>
+              <th scope="col" class="px-6 py-3">Qty</th>
+              <th scope="col" class="px-6 py-3">Price</th>
+              <th scope="col" class="px-6 py-3">Total</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let cart of myCart"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td class="w-32 p-4">
+                <img
+                  src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                  alt="Apple Watch"
+                />
+              </td>
+              <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                 {{cart.name}}
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center space-x-3">
+                  <button
+                    class="inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    type="button"
+                  >
+                    <span class="sr-only">Quantity button</span>
+                    <svg
+                      class="w-3 h-3"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 2"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 1h16"
+                      />
+                    </svg>
+                  </button>
+                  <div>
+                    <input
+                      type="number"
+                      id="first_product"
+                      class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="1"
+                      required
+                      [value]="cart.quantity"
+                      disabled="true"
+                    />
+                  </div>
+                  <button
+                    class="inline-flex items-center justify-center h-6 w-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                    type="button"
+                  >
+                    <span class="sr-only">Quantity button</span>
+                    <svg
+                      class="w-3 h-3"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 18 18"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 1v16M1 9h16"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </td>
+              <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  ${{cart.price}}
+              </td>
+              <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                  ${{cart.price}} X {{cart.quantity}} = ${{cart.total}}
+             </td>
+              <td class="px-6 py-4">
+                <a
+                  (click)="onRemove(cart.id)"
+                  class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                  >Remove</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2
+          class="px-5 py-12 text-xl font-semibold text-gray-900 dark:text-white"
+        >
+          Total: ${{totalPrice}}
+        </h2>
+      </div>
+      <button (click)="onConfirm()" *ngIf="myCart.length > 0" type="button" class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Check out</button>
+    </div>
+  </div>
+</div>

@@ -9,11 +9,9 @@ import { AuthService } from '../auth/auth.service';
 export class AuthGuardLogin implements CanActivate {
   constructor(private router: Router,private authService:AuthService) {}
   canActivate(): boolean {
-
     if (!localStorage.getItem("currentUser")) {
       return true;
     }
-    
     this.router.navigate(['/']);
     return false;
   }

@@ -22,6 +22,11 @@ import { AuthInterceptor } from './shared/AuthInterceptor';
 import { ProductService } from './shared/ProductService';
 import { ConfirmModalComponent } from './admin-dashboard/admin-products/confirm-modal/confirm-modal.component';
 import { ConfirmCategoryComponent } from './admin-dashboard/admin-category/confirm-category/confirm-category.component';
+import { AuthGuardHome } from './Routes/Route.Home.guard';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from './cart/cart.service';
+import { MessengerService } from './cart/Messenger.service';
+import { CartConfirmComponent } from './cart/cart-confirm/cart-confirm.component';
 
 
 
@@ -40,7 +45,9 @@ import { ConfirmCategoryComponent } from './admin-dashboard/admin-category/confi
     LoginComponent,
     AdminCategoryComponent,
     ConfirmModalComponent,
-    ConfirmCategoryComponent
+    ConfirmCategoryComponent,
+    CartComponent,
+    CartConfirmComponent
   ],
   imports: [
     FormsModule,
@@ -51,8 +58,10 @@ import { ConfirmCategoryComponent } from './admin-dashboard/admin-category/confi
     AppRoutingModule
   ],
   providers: [
-    CategoryService,
+    MessengerService,
     ProductService,
+    CategoryService,
+    CartService,
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

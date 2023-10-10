@@ -29,7 +29,17 @@ export class CategoryService {
               return res; 
             })
           );
-    }
+      }
+
+      getProductByCategoryId(id:number){
+           return this.http
+           .get(`http://localhost:8080/api/product/findByCategory/${id}`)
+           .pipe(
+            map((res: any) => {
+              return res; 
+            })
+          );
+      }
 
     
     

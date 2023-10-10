@@ -8,14 +8,22 @@ import { HomeComponent } from "../home/home.component";
 import { AdminCategoryComponent } from "../admin-dashboard/admin-category/admin-category.component";
 import { AuthGuard } from "./Routes.guard";
 import { AuthGuardLogin } from "./Routes.Login.guard";
+import { AuthGuardHome } from "./Route.Home.guard";
+import { CartComponent } from "../cart/cart.component";
+import { ProductsComponent } from "../products/products.component";
+
 
 const AppRoutes: Routes = [
+    {path: '', canActivate: [AuthGuardHome],component: HomeComponent , children : [
+         {path:'',component:ProductsComponent},
+         {path:'Cart',component:CartComponent},
+    ]}, 
+
     {path: 'login',canActivate:[AuthGuardLogin],component:LoginComponent},
     {path:'admin-dashboard',canActivate:[AuthGuard],component: AdminDashboardComponent, children : [
           {path:'',component:AdminProductsComponent},
           {path:'category',component:AdminCategoryComponent}
-    ]},
-    { path: '', component: HomeComponent}, 
+    ]}
 ];
 
 @NgModule({
