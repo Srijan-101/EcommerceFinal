@@ -27,6 +27,8 @@ import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
 import { MessengerService } from './cart/Messenger.service';
 import { CartConfirmComponent } from './cart/cart-confirm/cart-confirm.component';
+import { OrderService } from './shared/OrderService';
+import { AdminOrderComponent } from './admin-dashboard/admin-order/admin-order.component';
 
 
 
@@ -47,7 +49,8 @@ import { CartConfirmComponent } from './cart/cart-confirm/cart-confirm.component
     ConfirmModalComponent,
     ConfirmCategoryComponent,
     CartComponent,
-    CartConfirmComponent
+    CartConfirmComponent,
+    AdminOrderComponent
   ],
   imports: [
     FormsModule,
@@ -62,6 +65,7 @@ import { CartConfirmComponent } from './cart/cart-confirm/cart-confirm.component
     ProductService,
     CategoryService,
     CartService,
+    OrderService,
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

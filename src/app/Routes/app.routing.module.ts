@@ -11,6 +11,7 @@ import { AuthGuardLogin } from "./Routes.Login.guard";
 import { AuthGuardHome } from "./Route.Home.guard";
 import { CartComponent } from "../cart/cart.component";
 import { ProductsComponent } from "../products/products.component";
+import { AdminOrderComponent } from "../admin-dashboard/admin-order/admin-order.component";
 
 
 const AppRoutes: Routes = [
@@ -22,7 +23,8 @@ const AppRoutes: Routes = [
     {path: 'login',canActivate:[AuthGuardLogin],component:LoginComponent},
     {path:'admin-dashboard',canActivate:[AuthGuard],component: AdminDashboardComponent, children : [
           {path:'',component:AdminProductsComponent},
-          {path:'category',component:AdminCategoryComponent}
+          {path:'category',component:AdminCategoryComponent},
+          {path:'orders',component:AdminOrderComponent}
     ]}
 ];
 
