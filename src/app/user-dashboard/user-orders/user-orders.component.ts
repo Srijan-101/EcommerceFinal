@@ -12,6 +12,14 @@ export class UserOrdersComponent {
 
   constructor(private orderService:OrderService,private authService :AuthService){}
 
+  calculateTotalPrice(order:any): number {
+    let totalPrice = 0;
+    for (const product of order.productList) {
+      totalPrice += product.quantity * product.price;
+    }
+    return totalPrice;
+}
+
   ngOnInit(){
 
       this.orderService.getOrderbyId(this.authService.currentUserValue.Id)

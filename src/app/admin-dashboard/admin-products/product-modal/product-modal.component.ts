@@ -13,6 +13,9 @@ export class ProductModalComponent implements OnInit {
        imagePreview: string | ArrayBuffer | null = null; 
        isLoading:boolean = false;
 
+       errorMessage:string='';
+       error:boolean=false;
+
        constructor(private categoryService:CategoryService,private productService:ProductService){}
 
        onFileSelected(event: any): void {
@@ -42,6 +45,7 @@ export class ProductModalComponent implements OnInit {
 
        save(formData:any):void{
            this.isLoading = true;
+
            let data = {
               name : formData.Name,
               Category_id : parseInt(formData.Category),
@@ -52,14 +56,16 @@ export class ProductModalComponent implements OnInit {
           
            this.productService.saveProduct(data)
               .subscribe((res) => {
-
                  this.isLoading = false;
-                 this.removeModal();
+                 console.log(res);
+                  this.removeModal();
+                  window.location.reload();
               },(error) => {
                  console.log(error)
-                 this.removeModal();
-                 this.isLoading = false;
+                  this.errorMessage=error.error.data[0];
+                  this.error=true;
+                  this.isLoading = false;
               })
-              window.location.reload();
+             
        }
 }

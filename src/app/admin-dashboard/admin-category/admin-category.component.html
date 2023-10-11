@@ -1,6 +1,7 @@
 <app-confirm-category [inputData]="confirmData"></app-confirm-category>
 <div class="p-4 sm:ml-64">
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <app-message [error]="error" [message]="errorMessage"></app-message>
        <div class="grid grid-cols-2 gap-4">
           <form #f="ngForm" (submit)="onSave(f.value)">   
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"></label>

@@ -14,6 +14,7 @@ import { ProductsComponent } from "../products/products.component";
 import { AdminOrderComponent } from "../admin-dashboard/admin-order/admin-order.component";
 import { UserDashboardComponent } from "../user-dashboard/user-dashboard.component";
 import { AuthGuardUser } from "./Router.User.guard";
+import { RegisterComponent } from "../auth/register/register.component";
 
 
 const AppRoutes: Routes = [
@@ -25,6 +26,7 @@ const AppRoutes: Routes = [
     {path:'user-dashboard',canActivate: [AuthGuardUser],component:UserDashboardComponent},
 
     {path: 'login',canActivate:[AuthGuardLogin],component:LoginComponent},
+    {path:'signup',component:RegisterComponent},
     {path:'admin-dashboard',canActivate:[AuthGuard],component: AdminDashboardComponent, children : [
           {path:'',component:AdminProductsComponent},
           {path:'category',component:AdminCategoryComponent},

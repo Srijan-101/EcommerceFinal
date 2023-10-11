@@ -41,7 +41,7 @@
                              </p>
                           </div>
                           <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                             ${{product.price}}
+                            ${{product.price * product.quantity}}
                           </div>
                        </div>
                     </li>
@@ -54,7 +54,7 @@
                        </p>
                     </div>
                     <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                       300
+                        ${{calculateTotalPrice(order)}}
                     </div>
                  </div>
              </th>

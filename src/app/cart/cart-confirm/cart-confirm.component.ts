@@ -12,6 +12,9 @@ export class CartConfirmComponent {
     @Input() GrandTotal:any;
     @ViewChild('f') data!:ElementRef;
 
+    errorMessage:string='';
+    error:boolean=true;
+
     constructor(private Authservice:AuthService,private orderService:OrderService){
 
     }
@@ -42,6 +45,8 @@ export class CartConfirmComponent {
              this.onClose();
              window.location.reload();
           },error => {
+             this.errorMessage=error.error.data[0];
+             this.error=true;
              console.log(error);
           })
     }

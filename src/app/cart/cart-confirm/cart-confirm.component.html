@@ -14,6 +14,7 @@
                   </button>
               </div>
               <div class="p-6 space-y-6">
+                <app-message [error]="error" [message]="errorMessage"></app-message>
                 <ul class="divide-y divide-gray-200 dark:divide-gray-700">
                     <li *ngFor="let product of finalProduct " class="pb-3 sm:pb-4">
                        <div class="flex items-center space-x-4">

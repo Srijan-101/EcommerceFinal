@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit{
      LoginForm:FormGroup;
      error:boolean = false;
      errorMessage:string= '';
+    
      
 
      constructor(private authService:AuthService,private router:Router){
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit{
                  }else {this.router.navigate(['/'])}
              },
                (error) => {
-                  console.log(error);
+                  this.errorMessage=error.error.errormessage;
+                  this.error=true;
                }
           )
      }

@@ -25,4 +25,13 @@ export class AdminOrderComponent {
             a?.classList.remove("hidden");
             this.id = id;
       }
+
+      calculateTotalPrice(order:any): number {
+            let totalPrice = 0;
+            for (const product of order.productList) {
+              totalPrice += product.quantity * product.price;
+            }
+            return totalPrice;
+      }
+
 }

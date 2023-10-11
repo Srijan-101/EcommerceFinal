@@ -33,6 +33,8 @@ import { EditModalComponent } from './admin-dashboard/admin-products/edit-modal/
 import { SidebarComponent } from './user-dashboard/sidebar/sidebar.component';
 import { UserOrdersComponent } from './user-dashboard/user-orders/user-orders.component';
 import { ChangeStatusComponent } from './admin-dashboard/admin-order/change-status/change-status.component';
+import { MessageComponent } from './shared/message/message.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
@@ -43,6 +45,7 @@ import { ChangeStatusComponent } from './admin-dashboard/admin-order/change-stat
   declarations: [
     AppComponent,
     HeaderComponent,
+    MessageComponent,
     HomeComponent,
     ProductsComponent,
     AdminDashboardComponent,
@@ -62,7 +65,8 @@ import { ChangeStatusComponent } from './admin-dashboard/admin-order/change-stat
     UserDashboardComponent,
     SidebarComponent,
     UserOrdersComponent,
-    ChangeStatusComponent
+    ChangeStatusComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

@@ -8,8 +8,9 @@ import { CategoryService } from 'src/app/shared/CategoryService';
 })
 export class AdminCategoryComponent {
     categories: any[] | undefined;
-    
     confirmData!:{name:String,id:number};
+    error:boolean=false;
+    errorMessage:string="";
    
     onDeleteConfirm(Data:{name:string,id:number}){
       this.confirmData = Data;
@@ -28,13 +29,17 @@ export class AdminCategoryComponent {
   
 
     onSave(value:{type:string}){
-        this.categoryService.saveCategory(value)
-           .subscribe(res => {
-            console.log(res);
-           },error => {
-              console.log(error)
-           })
+        if(value.type){
+          this.categoryService.saveCategory(value)
+          .subscribe(res => {
+           console.log(res);
            window.location.reload();
-    }
+          },error => {
+            this.errorMessage=error.error.errormessage;
+            this.error=true;
+          })
+          
+   } else {this.errorMessage="Invalid category!!";this.error=true}
    
+ }
 }
