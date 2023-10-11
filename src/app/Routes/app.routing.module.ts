@@ -12,13 +12,17 @@ import { AuthGuardHome } from "./Route.Home.guard";
 import { CartComponent } from "../cart/cart.component";
 import { ProductsComponent } from "../products/products.component";
 import { AdminOrderComponent } from "../admin-dashboard/admin-order/admin-order.component";
+import { UserDashboardComponent } from "../user-dashboard/user-dashboard.component";
+import { AuthGuardUser } from "./Router.User.guard";
 
 
 const AppRoutes: Routes = [
     {path: '', canActivate: [AuthGuardHome],component: HomeComponent , children : [
          {path:'',component:ProductsComponent},
          {path:'Cart',component:CartComponent},
+        
     ]}, 
+    {path:'user-dashboard',canActivate: [AuthGuardUser],component:UserDashboardComponent},
 
     {path: 'login',canActivate:[AuthGuardLogin],component:LoginComponent},
     {path:'admin-dashboard',canActivate:[AuthGuard],component: AdminDashboardComponent, children : [

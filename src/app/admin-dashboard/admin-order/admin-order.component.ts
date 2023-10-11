@@ -8,6 +8,7 @@ import { OrderService } from 'src/app/shared/OrderService';
 })
 export class AdminOrderComponent {
       Orders:any[]=[];
+      id!:number;
 
       constructor(private orderService:OrderService){}
 
@@ -17,5 +18,11 @@ export class AdminOrderComponent {
                console.log(res);
                this.Orders = res;
             })
+      }
+
+      onUpdate(id:any){
+            let a = document.getElementById("updateStatus")
+            a?.classList.remove("hidden");
+            this.id = id;
       }
 }

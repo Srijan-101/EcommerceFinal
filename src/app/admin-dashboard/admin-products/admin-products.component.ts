@@ -11,6 +11,11 @@ export class AdminProductsComponent {
   products:any;
   confirmData!:{name:string,id:number};
 
+  EditData:any;
+  Productid!:number;
+
+
+
   constructor(private productService:ProductService){}
 
   ngOnInit(){
@@ -27,6 +32,12 @@ export class AdminProductsComponent {
       let a = document.getElementById("delete");
       a?.classList.remove("hidden");
   }
+
+  addEditModal(Data:any){
+    this.EditData = Data;
+    let addProduct = document.getElementById('EditModal')
+    addProduct?.classList.remove("hidden");
+ }
 
 
   addProduct(){

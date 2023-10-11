@@ -29,6 +29,13 @@ import { MessengerService } from './cart/Messenger.service';
 import { CartConfirmComponent } from './cart/cart-confirm/cart-confirm.component';
 import { OrderService } from './shared/OrderService';
 import { AdminOrderComponent } from './admin-dashboard/admin-order/admin-order.component';
+import { EditModalComponent } from './admin-dashboard/admin-products/edit-modal/edit-modal.component';
+import { SidebarComponent } from './user-dashboard/sidebar/sidebar.component';
+import { UserOrdersComponent } from './user-dashboard/user-orders/user-orders.component';
+import { ChangeStatusComponent } from './admin-dashboard/admin-order/change-status/change-status.component';
+
+
+
 
 
 
@@ -50,7 +57,12 @@ import { AdminOrderComponent } from './admin-dashboard/admin-order/admin-order.c
     ConfirmCategoryComponent,
     CartComponent,
     CartConfirmComponent,
-    AdminOrderComponent
+    AdminOrderComponent,
+    EditModalComponent,
+    UserDashboardComponent,
+    SidebarComponent,
+    UserOrdersComponent,
+    ChangeStatusComponent
   ],
   imports: [
     FormsModule,
