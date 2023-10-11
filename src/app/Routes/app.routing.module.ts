@@ -26,7 +26,7 @@ const AppRoutes: Routes = [
     {path:'user-dashboard',canActivate: [AuthGuardUser],component:UserDashboardComponent},
 
     {path: 'login',canActivate:[AuthGuardLogin],component:LoginComponent},
-    {path:'signup',component:RegisterComponent},
+    {path:'signup',canActivate:[AuthGuardLogin],component:RegisterComponent},
     {path:'admin-dashboard',canActivate:[AuthGuard],component: AdminDashboardComponent, children : [
           {path:'',component:AdminProductsComponent},
           {path:'category',component:AdminCategoryComponent},

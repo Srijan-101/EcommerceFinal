@@ -26,9 +26,6 @@ export class AuthService {
   // Login method
   login(email: string, password: string): Observable<any> {
     
-    const headers = new HttpHeaders().set('SkipInterceptor', '');
-    const options = { headers };
-
 
     return this.http
       .post<any>('http://localhost:8080/api/user/Login',{ email, password })
@@ -46,6 +43,14 @@ export class AuthService {
         })
       );
   }
+
+
+  SignUp(Data:any): Observable<any> {
+    return this.http
+      .post<any>('http://localhost:8080/api/user/SignUp',Data)
+  }
+
+
 
 
   logout() {
