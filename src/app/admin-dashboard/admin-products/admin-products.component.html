@@ -46,7 +46,7 @@
         <tbody>
             <tr *ngFor="let product of products"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
              <th class="px-6 py-4">
-                <img class="w-64" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPeOToFHVA1REVwMgYRuOggSCtDiLazaf75-lUrZ1GwpcqDJ6ultOrN6LfTOWmht5e_Rc&usqp=CAU" alt="" />
+                <img class="w-64" [src]="product.imageurl" alt="" />
              </th>
              <th scope="row" class="px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{product.name}}

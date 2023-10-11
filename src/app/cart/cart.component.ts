@@ -3,6 +3,7 @@ import { MessengerService } from './Messenger.service';
 import { CartService } from './cart.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { colorSpace } from '@cloudinary/url-gen/actions/delivery';
 
 @Component({
   selector: 'app-cart',
@@ -25,6 +26,28 @@ export class CartComponent implements OnInit {
            })
           this.totalProduct = this.cartService.getCart().length;
       }
+
+
+      increase(orderId:number) {
+        this.myCart = this.myCart.map(product => {
+          if (product.id === orderId) {
+            this.totalPrice = this.totalPrice + product.price;
+            return { ...product, quantity: product.quantity + 1 ,total: (product.quantity + 1) * product.price};
+          }
+          return product;
+        });
+      }
+
+      decrease(orderId:number) {
+        this.myCart = this.myCart.map(product => {
+          if (product.id === orderId) {
+            this.totalPrice = this.totalPrice -  product.price;
+            return { ...product, quantity: product.quantity - 1 ,total: (product.quantity - 1 ) * product.price};
+          }
+          return product;
+        });
+      }
+
 
       onRemove(id:number){
         this.cartService.updateProduct();

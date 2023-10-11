@@ -14,7 +14,7 @@
             <section  class="col-span-3 mx-auto  grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-4 mt-4 mb-5">
                 <div *ngFor="let product of products" class="w-50 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                     <a href="#">
-                        <img src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        <img [src]="product.imageurl"
                                 alt="Product" class="w-72 object-cover rounded-t-xl" />
                         <div class="px-4 py-3 ">
                             <span class="text-gray-400 mr-3 uppercase text-xs">{{product.category.type}}</span>

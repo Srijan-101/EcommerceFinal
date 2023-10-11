@@ -2,12 +2,14 @@
 import { Subject } from "rxjs";
 import { MessengerService } from "./Messenger.service";
 import { Injectable } from "@angular/core";
+import { colorSpace } from "@cloudinary/url-gen/actions/delivery";
 
 interface cartProduct {
     id : number
     name : string,
     quantity : number,
-    price : number
+    price : number,
+    imageurl:string
 }
 
 @Injectable()
@@ -30,6 +32,7 @@ export class CartService {
     
     
     AddCart(product:any){
+        console.log(product,"hello");
         const existingProduct = 
           this.ProductList.find((p) => p.id === product.id);
         if (existingProduct) {
@@ -42,6 +45,8 @@ export class CartService {
     } 
 
     getCart(){
+      console.log(this.ProductList);
           return this.ProductList;
+          
     }
 }

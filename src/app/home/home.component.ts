@@ -17,6 +17,7 @@ export class HomeComponent {
                   name : product.name,
                   id : product.id,
                   price : product.price,
+                  imageurl:product.imageurl,
                   quantity:1
                 })
             })

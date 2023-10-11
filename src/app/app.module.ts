@@ -35,6 +35,7 @@ import { UserOrdersComponent } from './user-dashboard/user-orders/user-orders.co
 import { ChangeStatusComponent } from './admin-dashboard/admin-order/change-status/change-status.component';
 import { MessageComponent } from './shared/message/message.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { RemoveAuthorizationInterceptor } from './shared/RemoveAuth';
 
 
 
@@ -82,7 +83,7 @@ import { RegisterComponent } from './auth/register/register.component';
     CategoryService,
     CartService,
     OrderService,
-    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
