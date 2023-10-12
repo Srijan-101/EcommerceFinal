@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { colorSpace } from '@cloudinary/url-gen/actions/delivery';
 import { ProductService } from 'src/app/shared/ProductService';
 
 @Component({
@@ -9,6 +10,7 @@ import { ProductService } from 'src/app/shared/ProductService';
 export class AdminProductsComponent {
 
   products:any;
+  searchProducts:any;
   confirmData!:{name:string,id:number};
 
   EditData:any;
@@ -38,6 +40,22 @@ export class AdminProductsComponent {
     let addProduct = document.getElementById('EditModal')
     addProduct?.classList.remove("hidden");
  }
+
+ searchProductsByName(searchTerm:any) {
+  searchTerm = searchTerm.toLowerCase(); 
+   const products = this.products.filter((product:any) => {
+     return product.name.toLowerCase().includes(searchTerm);
+  });
+
+  return products;
+}
+
+
+onSearch(searchTerm:any){
+    this.searchProducts = this.searchProductsByName(searchTerm);
+    console.log(this.searchProducts);
+}
+
 
 
   addProduct(){

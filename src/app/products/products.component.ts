@@ -34,6 +34,10 @@ export class ProductsComponent {
          })
     }
 
+   
+
+
+
     onProductChange(id:string){
       this.selectedField = parseInt(id);
         if(+id === 0){

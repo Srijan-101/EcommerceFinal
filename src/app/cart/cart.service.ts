@@ -32,7 +32,6 @@ export class CartService {
     
     
     AddCart(product:any){
-        console.log(product,"hello");
         const existingProduct = 
           this.ProductList.find((p) => p.id === product.id);
         if (existingProduct) {
@@ -46,7 +45,6 @@ export class CartService {
 
     getCart(){
       console.log(this.ProductList);
-          return this.ProductList;
-          
+          return this.ProductList;  
     }
 }
